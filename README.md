@@ -2,9 +2,9 @@
     <img src="https://raw.githubusercontent.com/gemini-api-php/client/main/assets/example.png" width="800" alt="Gemini API PHP Client - Example">
 </p>
 <p align="center">
-    <a href="https://packagist.org/packages/gemini-api-php/client"><img alt="Total Downloads" src="https://img.shields.io/packagist/dt/gemini-api-php/client"></a>
-    <a href="https://packagist.org/packages/gemini-api-php/client"><img alt="Latest Version" src="https://img.shields.io/packagist/v/gemini-api-php/client"></a>
-    <a href="https://packagist.org/packages/gemini-api-php/client"><img alt="License" src="https://img.shields.io/github/license/gemini-api-php/client"></a>
+    <a href="https://packagist.org/packages/google-gemini-api-php/client"><img alt="Total Downloads" src="https://packagist.org/packages/google-gemini-api-php/client/stats"></a>
+    <a href="https://packagist.org/packages/google-gemini-api-php/client"><img alt="Latest Version" src="https://packagist.org/packages/google-gemini-api-php/client#1.0.0"></a>
+    <a href="https://packagist.org/packages/google-gemini-api-php/client"><img alt="License" src="https://github.com/UsmanIlamdin/google-gemini-api-php/blob/master/LICENSE"></a>
 </p>
 
 # Gemini API PHP Gemini
@@ -13,7 +13,7 @@ Gemini API PHP Client allows you to use the Google's generative AI models, like 
 
 _This library is not developed or endorsed by Google._
 
-- Nexius - **[github.com/erdemkose](https://github.com/erdemkose)**
+- Usman IlamDin - **[github.com/usmanilamdin](https://github.com/usmanilamdin)**
 
 ## Table of Contents
 - [Installation](#installation)
