@@ -300,14 +300,7 @@ class Gemini implements GeminiClientInterface
         $response = $this->client->sendRequest($httpRequest);
 
         if ($response->getStatusCode() !== 200) {
-            throw new RuntimeException(
-                sprintf(
-                    'Gemini API operation failed: operation=%s, status_code=%d,  response=%s',
-                    $request->getOperation(),
-                    $response->getStatusCode(),
-                    $response->getBody(),
-                ),
-            );
+              return (string) $response->getBody();
         }
 
         return (string) $response->getBody();

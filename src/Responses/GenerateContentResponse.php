@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace GeminiAPI\Responses;
 
+use GeminiAPI\Resources\Errors;
 use GeminiAPI\Traits\ArrayTypeValidator;
 use GeminiAPI\Resources\Candidate;
 use GeminiAPI\Resources\Parts\PartInterface;
@@ -22,6 +23,7 @@ class GenerateContentResponse
     public function __construct(
         public readonly array $candidates,
         public readonly ?PromptFeedback $promptFeedback = null,
+        public readonly ?Errors $errors = null,
     ) {
         $this->ensureArrayOfType($candidates, Candidate::class);
     }
@@ -64,7 +66,31 @@ class GenerateContentResponse
             );
         }
 
-        return $parts[0]->text;
+        return json_encode([
+            'text' => $parts[0]->text
+        ]);
+    }
+
+    public function error(): string
+    {
+        if ($this->errors === null) {
+            throw new ValueError(
+                'No errors available. The `error()` method '.
+                'can only be called when there is an error present.'
+            );
+        }
+
+        $error = $this->errors;
+
+        $errorArray = [
+            'code' => $error->code,
+            'message' => $error->message,
+            'status' => $error->status
+        ];
+
+        return json_encode([
+            'error' => $errorArray
+        ]);
     }
 
     /**
@@ -96,6 +122,11 @@ class GenerateContentResponse
             $array['candidates'] ?? [],
         );
 
-        return new self($candidates, $promptFeedback);
+        $errors = null;
+        if (!empty($array['error'])) {
+            $errors = Errors::fromArray($array['error']);
+        }
+
+        return new self($candidates, $promptFeedback, $errors);
     }
 }
